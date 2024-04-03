@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.AdicionarTransportadora">
+   <children>
+      <Label layoutX="6.0" layoutY="14.0" text="Adicionar Transportadora">
+         <font>
+            <Font name="Georgia" size="36.0" />
+         </font>
+      </Label>
+      <Line endX="409.8929443359375" endY="-1.1444091796875E-5" layoutX="191.0" layoutY="55.0" startX="-191.0" startY="-1.1444091796875E-5" />
+      <Button layoutX="440.0" layoutY="21.0" mnemonicParsing="false" onAction="#handleBackButton" prefHeight="26.0" prefWidth="147.0" style="-fx-background-color: #4F6EDE;" text="Voltar" textFill="WHITE">
+         <font>
+            <Font name="Georgia" size="12.0" />
+         </font>
+      </Button>
+      <Button layoutX="412.0" layoutY="342.0" mnemonicParsing="false" onAction="#handleAdicionarTransportadora" prefHeight="26.0" prefWidth="175.0" style="-fx-background-color: #4F6EDE;" text="Concluir" textFill="WHITE">
+         <font>
+            <Font name="Georgia" size="12.0" />
+         </font>
+      </Button>
+      <Label layoutX="41.0" layoutY="67.0" text="Nome">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <TextField fx:id="nameField" layoutX="41.0" layoutY="106.0" prefHeight="27.0" prefWidth="216.0" style="-fx-border-color: #000000;" styleClass="border" />
+      <Label layoutX="42.0" layoutY="142.0" text="Morada">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <TextField fx:id="addressField" layoutX="41.0" layoutY="180.0" prefHeight="27.0" prefWidth="408.0" style="-fx-border-color: #000000;" />
+      <Label layoutX="42.0" layoutY="223.0" text="Email">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <TextField fx:id="emailField" layoutX="41.0" layoutY="259.0" prefHeight="26.0" prefWidth="216.0" style="-fx-border-color: #000000;" />
+      <Label layoutX="42.0" layoutY="289.0" text="Website">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <TextField fx:id="websiteField" layoutX="41.0" layoutY="327.0" prefHeight="26.0" prefWidth="216.0" style="-fx-border-color: #000000;" />
+      <Label layoutX="311.0" layoutY="71.0" text="Telefone">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <TextField fx:id="phoneField" layoutX="311.0" layoutY="106.0" prefHeight="27.0" prefWidth="147.0" style="-fx-border-color: #000000;" />
+   </children>
+</AnchorPane>
