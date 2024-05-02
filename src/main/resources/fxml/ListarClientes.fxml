@@ -30,8 +30,7 @@
          <columns>
             <TableColumn fx:id="idClienteColumn" minWidth="0.5" prefWidth="66.4000244140625" text="Id Cliente" />
             <TableColumn fx:id="nomeColumn" minWidth="14.0" prefWidth="66.39999389648438" text="Nome" />
-            <TableColumn fx:id="contactoColumn" minWidth="1.0" prefWidth="77.60003662109375" text="Contacto" />
-            <TableColumn fx:id="moradaColumn" minWidth="8.0" prefWidth="57.5999755859375" text="Morada" />
+            <TableColumn fx:id="telefoneColumn" minWidth="1.0" prefWidth="77.60003662109375" text="Telefone" />
             <TableColumn fx:id="emailColumn" minWidth="6.0" prefWidth="88.79998779296875" text="Email" />
             <TableColumn fx:id="nifColumn" prefWidth="67.20001220703125" text="Nif" />
             <TableColumn fx:id="usernameColumn" prefWidth="75.0" text="Username" />

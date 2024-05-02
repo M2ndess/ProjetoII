@@ -1,6 +1,8 @@
 package Entity;
 
 import javax.persistence.*;
+import java.util.LinkedHashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "cliente")
@@ -8,7 +10,11 @@ public class Cliente {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_cliente", nullable = false)
-    private Integer id;
+    private Integer idCliente;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_tipo_cliente")
+    private TipoCliente idTipoCliente;
 
     @Column(name = "nome", nullable = false, length = 100)
     private String nome;
@@ -28,12 +34,54 @@ public class Cliente {
     @Column(name = "password", length = 50)
     private String password;
 
+    @Lob
+    @Column(name = "estado_conta")
+    private String estadoConta;
+
+    @OneToMany(mappedBy = "idCliente")
+    private Set<Recinto> recintos = new LinkedHashSet<>();
+
+    @OneToMany(mappedBy = "idCliente")
+    private Set<Reserva> reservas = new LinkedHashSet<>();
+
+    public Cliente() {
+        // Empty constructor required by JPA
+    }
+
+    public Cliente(Integer idCliente, String nome, String telefone, String email, String nif, String username, String estadoConta) {
+        this.idCliente = idCliente;
+        this.nome = nome;
+        this.telefone = telefone;
+        this.email = email;
+        this.nif = nif;
+        this.username = username;
+        this.estadoConta = estadoConta;
+    }
+
+    public Cliente(String nome, String telefone, String email, String nif, String username,String password, String estadoConta) {
+        this.nome = nome;
+        this.telefone = telefone;
+        this.email = email;
+        this.nif = nif;
+        this.username = username;
+        this.password = password;
+        this.estadoConta = estadoConta;
+    }
+
     public Integer getId() {
-        return id;
+        return idCliente;
     }
 
     public void setId(Integer id) {
-        this.id = id;
+        this.idCliente = idCliente;
+    }
+
+    public TipoCliente getIdTipoCliente() {
+        return idTipoCliente;
+    }
+
+    public void setIdTipoCliente(TipoCliente idTipoCliente) {
+        this.idTipoCliente = idTipoCliente;
     }
 
     public String getNome() {
@@ -82,6 +130,30 @@ public class Cliente {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getEstadoConta() {
+        return estadoConta;
+    }
+
+    public void setEstadoConta(String estadoConta) {
+        this.estadoConta = estadoConta;
+    }
+
+    public Set<Recinto> getRecintos() {
+        return recintos;
+    }
+
+    public void setRecintos(Set<Recinto> recintos) {
+        this.recintos = recintos;
+    }
+
+    public Set<Reserva> getReservas() {
+        return reservas;
+    }
+
+    public void setReservas(Set<Reserva> reservas) {
+        this.reservas = reservas;
     }
 
 }

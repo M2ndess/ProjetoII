@@ -14,7 +14,7 @@
             <Font name="Georgia" size="20.0" />
          </font>
       </Button>
-      <Button layoutX="183.0" layoutY="78.0" mnemonicParsing="false" onAction="#handleEnchidosButton" prefHeight="142.0" prefWidth="142.0" style="-fx-border-color: #000000;" text="DashBoard" textAlignment="CENTER" textOverrun="CLIP" wrapText="true">
+      <Button layoutX="183.0" layoutY="78.0" mnemonicParsing="false" onAction="#handleDashBoardButton" prefHeight="142.0" prefWidth="142.0" style="-fx-border-color: #000000;" text="DashBoard" textAlignment="CENTER" textOverrun="CLIP" wrapText="true">
          <font>
             <Font size="20.0" />
          </font></Button>
@@ -22,7 +22,7 @@
          <font>
             <Font size="20.0" />
          </font></Button>
-      <Button layoutX="186.0" layoutY="233.0" mnemonicParsing="false" onAction="#handleMudarFaseProducaoButton" prefHeight="142.0" prefWidth="142.0" style="-fx-border-color: #000000;" text="Utilizadores" textAlignment="CENTER" textOverrun="CLIP" wrapText="true">
+      <Button layoutX="186.0" layoutY="233.0" mnemonicParsing="false" onAction="#handleClientesButton" prefHeight="142.0" prefWidth="142.0" style="-fx-border-color: #000000;" text="Clientes" textAlignment="CENTER" textOverrun="CLIP" wrapText="true">
          <font>
             <Font size="20.0" />
          </font></Button>

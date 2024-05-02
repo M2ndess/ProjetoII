@@ -23,28 +23,6 @@ public class MainMenu {
         switchScene(event);
     }
 
-    //Matérias Primas Button
-    @FXML
-    public void handleMateriasPrimasButton(ActionEvent event) throws IOException {
-        root = FXMLLoader.load(getClass().getResource("/fxml/StockMateriasPrimas.fxml"));
-        switchScene(event);
-    }
-
-    //Enchidos Button
-    @FXML
-    public void handleEnchidosButton(ActionEvent event) throws IOException {
-        root = FXMLLoader.load(getClass().getResource("/fxml/StockEnchidos.fxml"));
-        switchScene(event);
-    }
-
-
-    //Mudar fase de Producao Button
-    @FXML
-    public void handleMudarFaseProducaoButton(ActionEvent event) throws IOException {
-        root = FXMLLoader.load(getClass().getResource("/fxml/FaseProducao.fxml"));
-        switchScene(event);
-    }
-
     //Funcionarios Button
     @FXML
     public void handleFuncionariosButton(ActionEvent event) throws IOException {
@@ -52,10 +30,10 @@ public class MainMenu {
         switchScene(event);
     }
 
-    //Fornecedores Button
+    //DashBoard Button
     @FXML
-    public void handleFornecedoresButton(ActionEvent event) throws IOException {
-        root = FXMLLoader.load(getClass().getResource("/fxml/ListarFornecedores.fxml"));
+    public void handleDashBoardButton(ActionEvent event) throws IOException {
+        root = FXMLLoader.load(getClass().getResource("/fxml/ListarTransportadoras.fxml"));
         switchScene(event);
     }
 
@@ -70,13 +48,6 @@ public class MainMenu {
     @FXML
     public void handleClientesButton(ActionEvent event) throws IOException {
         root = FXMLLoader.load(getClass().getResource("/fxml/ListarClientes.fxml"));
-        switchScene(event);
-    }
-
-    //Pedidos de Cliente Button
-    @FXML
-    public void handlePedidosClienteButton(ActionEvent event) throws IOException {
-        root = FXMLLoader.load(getClass().getResource("/fxml/ListarPedidosCliente.fxml"));
         switchScene(event);
     }
 
