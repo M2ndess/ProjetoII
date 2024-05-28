@@ -31,6 +31,33 @@ public class Recinto {
     @Column(name = "info_extra")
     private String infoExtra;
 
+    @Column(name = "estado_recinto", nullable = true, length = 50)
+    private String estadoRecinto;
+
+    public Recinto() {
+        // Empty constructor required by JPA
+    }
+
+    public Recinto(Integer id, Cliente idCliente, String nome, String morada, String horarioFuncionamento, String infoExtra, String estadoRecinto) {
+        this.id = id;
+        this.idCliente = idCliente;
+        this.nome = nome;
+        this.morada = morada;
+        this.horarioFuncionamento = horarioFuncionamento;
+        this.infoExtra = infoExtra;
+        this.estadoRecinto = estadoRecinto;
+    }
+
+
+    public Recinto(Cliente idCliente, String nome, String morada, String horarioFuncionamento, String infoExtra, String estadoRecinto) {
+        this.idCliente = idCliente;
+        this.nome = nome;
+        this.morada = morada;
+        this.horarioFuncionamento = horarioFuncionamento;
+        this.infoExtra = infoExtra;
+        this.estadoRecinto = estadoRecinto;
+    }
+
     public Integer getId() {
         return id;
     }
@@ -87,4 +114,11 @@ public class Recinto {
         this.infoExtra = infoExtra;
     }
 
+    public String getEstadoRecinto() {
+        return estadoRecinto;
+    }
+
+    public void setEstadoRecinto(String estadoRecinto) {
+        this.estadoRecinto = estadoRecinto;
+    }
 }

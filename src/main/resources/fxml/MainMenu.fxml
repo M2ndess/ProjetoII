@@ -18,7 +18,7 @@
          <font>
             <Font size="20.0" />
          </font></Button>
-      <Button layoutX="347.0" layoutY="233.0" mnemonicParsing="false" onAction="#handleTransportadorasButton" prefHeight="142.0" prefWidth="142.0" style="-fx-border-color: #000000;" text="Recintos" textAlignment="CENTER" textOverrun="CLIP" wrapText="true">
+      <Button layoutX="347.0" layoutY="233.0" mnemonicParsing="false" onAction="#handleRecintosButton" prefHeight="142.0" prefWidth="142.0" style="-fx-border-color: #000000;" text="Recintos" textAlignment="CENTER" textOverrun="CLIP" wrapText="true">
          <font>
             <Font size="20.0" />
          </font></Button>
@@ -26,7 +26,7 @@
          <font>
             <Font size="20.0" />
          </font></Button>
-      <Button layoutX="347.0" layoutY="78.0" mnemonicParsing="false" onAction="#handleFuncionariosButton" prefHeight="142.0" prefWidth="142.0" style="-fx-border-color: #000000;" text="Reservas" textAlignment="CENTER" textOverrun="CLIP" wrapText="true">
+      <Button layoutX="347.0" layoutY="78.0" mnemonicParsing="false" onAction="#handleReservasButton" prefHeight="142.0" prefWidth="142.0" style="-fx-border-color: #000000;" text="Reservas" textAlignment="CENTER" textOverrun="CLIP" wrapText="true">
          <font>
             <Font size="20.0" />
          </font></Button>

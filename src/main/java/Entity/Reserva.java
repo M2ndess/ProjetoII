@@ -16,6 +16,10 @@ public class Reserva {
     @JoinColumn(name = "id_cliente")
     private Cliente idCliente;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_recinto")
+    private Recinto idRecinto;
+
     @Column(name = "pagamento")
     private BigDecimal pagamento;
 
@@ -24,6 +28,33 @@ public class Reserva {
 
     @Column(name = "hora_fim")
     private Instant horaFim;
+
+    @Column(name = "estado_reserva", nullable = true, length = 50)
+    private String estadoReserva;
+
+    public Reserva() {
+        // Empty constructor required by JPA
+    }
+
+    public Reserva(Integer id, Cliente idCliente, Recinto idRecinto, BigDecimal pagamento, Instant horaInicio, Instant horaFim, String estadoReserva) {
+        this.id = id;
+        this.idCliente = idCliente;
+        this.idRecinto = idRecinto;
+        this.pagamento = pagamento;
+        this.horaInicio = horaInicio;
+        this.horaFim = horaFim;
+        this.estadoReserva = estadoReserva;
+    }
+
+
+    public Reserva(Cliente idCliente, Recinto idRecinto, BigDecimal pagamento, Instant horaInicio, Instant horaFim, String estadoReserva) {
+        this.idCliente = idCliente;
+        this.idRecinto = idRecinto;
+        this.pagamento = pagamento;
+        this.horaInicio = horaInicio;
+        this.horaFim = horaFim;
+        this.estadoReserva = estadoReserva;
+    }
 
     public Integer getId() {
         return id;
@@ -39,6 +70,14 @@ public class Reserva {
 
     public void setIdCliente(Cliente idCliente) {
         this.idCliente = idCliente;
+    }
+
+    public Recinto getIdRecinto() {
+        return idRecinto;
+    }
+
+    public void setIdRecinto(Recinto idRecinto) {
+        this.idRecinto = idRecinto;
     }
 
     public BigDecimal getPagamento() {
@@ -63,6 +102,14 @@ public class Reserva {
 
     public void setHoraFim(Instant horaFim) {
         this.horaFim = horaFim;
+    }
+
+    public String getEstadoReserva() {
+        return estadoReserva;
+    }
+
+    public void setEstadoReserva(String estadoRecinto) {
+        this.estadoReserva = estadoReserva;
     }
 
 /*
