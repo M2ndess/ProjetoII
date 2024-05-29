@@ -13,7 +13,7 @@ public class Recinto {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_cliente")
-    private Integer idCliente;
+    private Cliente cliente;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_tipo_recinto")
@@ -41,9 +41,9 @@ public class Recinto {
         // Empty constructor required by JPA
     }
 
-    public Recinto(Integer id, Integer idCliente, String nome, String morada, String horarioFuncionamento, String infoExtra, String estadoRecinto) {
+    public Recinto(Integer id, Cliente cliente, String nome, String morada, String horarioFuncionamento, String infoExtra, String estadoRecinto) {
         this.id = id;
-        this.idCliente = idCliente;
+        this.cliente = cliente;
         this.nome = nome;
         this.morada = morada;
         this.horarioFuncionamento = horarioFuncionamento;
@@ -52,8 +52,8 @@ public class Recinto {
     }
 
 
-    public Recinto(Integer idCliente, String nome, String morada, String horarioFuncionamento, String infoExtra, String estadoRecinto) {
-        this.idCliente = idCliente;
+    public Recinto(Cliente cliente, String nome, String morada, String horarioFuncionamento, String infoExtra, String estadoRecinto) {
+        this.cliente = cliente;
         this.nome = nome;
         this.morada = morada;
         this.horarioFuncionamento = horarioFuncionamento;
@@ -69,12 +69,12 @@ public class Recinto {
         this.id = id;
     }
 
-    public Integer getIdCliente() {
-        return idCliente;
+    public Cliente getCliente() {
+        return cliente;
     }
 
-    public void setIdCliente(Integer idCliente) {
-        this.idCliente = idCliente;
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
     }
 
     public TipoRecinto getIdTipoRecinto() {

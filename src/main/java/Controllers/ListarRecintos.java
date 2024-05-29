@@ -1,5 +1,6 @@
 package Controllers;
 
+import javafx.beans.property.SimpleObjectProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -23,6 +24,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
+import javafx.beans.property.SimpleStringProperty;
 
 public class ListarRecintos implements Initializable {
 
@@ -33,7 +35,7 @@ public class ListarRecintos implements Initializable {
     private TableColumn<Recinto, Integer> idRecintoColumn;
 
     @FXML
-    private TableColumn<Recinto, Integer> IdProprietarioColumn;
+    private TableColumn<Recinto, String> nomeClienteColumn;
 
     @FXML
     private TableColumn<Recinto, String> nomeRecintoColumn;
@@ -59,6 +61,7 @@ public class ListarRecintos implements Initializable {
 
     private void loadData() {
         ClienteService clienteService = new ClienteService();
+        RecintoService recintoService = new RecintoService();
 
         DatabaseConnection connection = new DatabaseConnection();
         String sql = "SELECT * FROM recinto";
@@ -68,7 +71,7 @@ public class ListarRecintos implements Initializable {
              ResultSet rs = stmt.executeQuery()) {
 
             idRecintoColumn.setCellValueFactory(new PropertyValueFactory<>("id"));
-            IdProprietarioColumn.setCellValueFactory(new PropertyValueFactory<>("idCliente"));
+            nomeClienteColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getCliente().getNome()));
             nomeRecintoColumn.setCellValueFactory(new PropertyValueFactory<>("nome"));
             moradaRecintoColumn.setCellValueFactory(new PropertyValueFactory<>("morada"));
             horarioColumn.setCellValueFactory(new PropertyValueFactory<>("horarioFuncionamento"));
@@ -76,9 +79,12 @@ public class ListarRecintos implements Initializable {
             estadoRecintoColumn.setCellValueFactory(new PropertyValueFactory<>("estadoRecinto"));
 
             while (rs.next()) {
+
+                Cliente cliente = clienteService.fetchClienteById(rs.getInt("id_cliente"));
+
                 Recinto recintoInfo = new Recinto(
                         rs.getInt("id_recinto"),
-                        rs.getInt("id_cliente"),
+                        cliente,
                         rs.getString("nome"),
                         rs.getString("morada"),
                         rs.getString("horario_funcionamento"),
@@ -146,7 +152,7 @@ public class ListarRecintos implements Initializable {
              ResultSet rs = stmt.executeQuery()) {
 
             idRecintoColumn.setCellValueFactory(new PropertyValueFactory<>("id"));
-            IdProprietarioColumn.setCellValueFactory(new PropertyValueFactory<>("idCliente"));
+            nomeClienteColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getCliente().getNome()));
             nomeRecintoColumn.setCellValueFactory(new PropertyValueFactory<>("nome"));
             moradaRecintoColumn.setCellValueFactory(new PropertyValueFactory<>("morada"));
             horarioColumn.setCellValueFactory(new PropertyValueFactory<>("horarioFuncionamento"));
@@ -157,12 +163,12 @@ public class ListarRecintos implements Initializable {
             while (rs.next()) {
                 int idCliente = rs.getInt("id_cliente");
 
-                Cliente cliente = clienteService.fetchClienteById(idCliente);
+                Cliente cliente = clienteService.fetchClienteById(rs.getInt("id_cliente"));
 
                 // Use o cliente retornado para criar uma instância de Recinto
                 Recinto recintoInfo = new Recinto(
                         rs.getInt("id_recinto"),
-                        rs.getInt("id_cliente"),
+                        cliente,
                         rs.getString("nome"),
                         rs.getString("morada"),
                         rs.getString("horario_funcionamento"),
