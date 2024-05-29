@@ -57,11 +57,17 @@ public class DashBoard implements Initializable {
         String totalRecintosQuery = "SELECT COUNT(*) AS total FROM recinto";
         String totalProprietariosQuery = "SELECT COUNT(DISTINCT id_cliente) AS total FROM recinto";
         String totalReservasQuery = "SELECT COUNT(*) AS total FROM reserva";
-        String reservas24hQuery = "SELECT COUNT(*) AS total FROM reserva WHERE data_reserva >= NOW() - INTERVAL 1 DAY";
-        String reservasMesQuery = "SELECT COUNT(*) AS total FROM reserva WHERE MONTH(data_reserva) = MONTH(CURDATE())";
-        String receitaTotalQuery = "SELECT SUM(preco) AS total FROM reserva";
-        String receita24hQuery = "SELECT SUM(preco) AS total FROM reserva WHERE data_reserva >= NOW() - INTERVAL 1 DAY";
-        String receitaMesQuery = "SELECT SUM(preco) AS total FROM reserva WHERE MONTH(data_reserva) = MONTH(CURDATE())";
+        String reservas24hQuery = "SELECT COUNT(*) AS total FROM reserva WHERE data_reserva >= NOW() - INTERVAL '1 DAY'";
+        String reservasMesQuery = "SELECT COUNT(*) AS total FROM reserva WHERE EXTRACT(MONTH FROM data_reserva) = EXTRACT(MONTH FROM CURRENT_DATE)";
+        String receitaTotalQuery = "SELECT SUM(p.valor_total) AS total FROM reserva r JOIN pagamento p ON r.id_pagamento = p.id_pagamento";
+        String receita24hQuery = "SELECT COALESCE(SUM(p.valor_total), 0) AS total\n" +
+                "FROM reserva r\n" +
+                "         LEFT JOIN pagamento p ON r.id_pagamento = p.id_pagamento\n" +
+                "WHERE r.data_reserva >= NOW() - INTERVAL '1 DAY'";
+        String receitaMesQuery = "SELECT COALESCE(SUM(p.valor_total), 0) AS total\n" +
+                "FROM reserva r\n" +
+                "         LEFT JOIN pagamento p ON r.id_pagamento = p.id_pagamento\n" +
+                "WHERE EXTRACT(MONTH FROM r.data_reserva) = EXTRACT(MONTH FROM CURRENT_DATE)";
 
         try (Connection conn = connection.getConnection()) {
             totalClientes.setText(getSingleValueFromQuery(conn, totalClientesQuery));
