@@ -76,13 +76,9 @@ public class ListarRecintos implements Initializable {
             estadoRecintoColumn.setCellValueFactory(new PropertyValueFactory<>("estadoRecinto"));
 
             while (rs.next()) {
-                int idCliente = rs.getInt("id_cliente");
-
-                Cliente cliente = clienteService.fetchClienteById(idCliente);
-
                 Recinto recintoInfo = new Recinto(
                         rs.getInt("id_recinto"),
-                        cliente,
+                        rs.getInt("id_cliente"),
                         rs.getString("nome"),
                         rs.getString("morada"),
                         rs.getString("horario_funcionamento"),
@@ -166,7 +162,7 @@ public class ListarRecintos implements Initializable {
                 // Use o cliente retornado para criar uma instância de Recinto
                 Recinto recintoInfo = new Recinto(
                         rs.getInt("id_recinto"),
-                        cliente,
+                        rs.getInt("id_cliente"),
                         rs.getString("nome"),
                         rs.getString("morada"),
                         rs.getString("horario_funcionamento"),

@@ -1,5 +1,6 @@
 package Controllers;
 
+import javafx.beans.property.SimpleObjectProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -16,6 +17,7 @@ import javafx.stage.Stage;
 import Entity.Reserva;
 import Entity.Cliente;
 import Entity.Recinto;
+import Entity.Pagamento;
 
 import java.io.IOException;
 import java.math.BigDecimal;
@@ -63,6 +65,7 @@ public class ListarReserva implements Initializable {
     private void loadData() {
         ClienteService clienteService = new ClienteService();
         RecintoService recintoService = new RecintoService();
+        PagamentoService pagamentoService = new PagamentoService();
 
         DatabaseConnection connection = new DatabaseConnection();
         String sql = "SELECT * FROM reserva";
@@ -74,23 +77,20 @@ public class ListarReserva implements Initializable {
             idReservaColumn.setCellValueFactory(new PropertyValueFactory<>("id"));
             idClienteColumn.setCellValueFactory(new PropertyValueFactory<>("idCliente"));
             idRecintoColumn.setCellValueFactory(new PropertyValueFactory<>("idRecinto"));
-            pagamentoColumn.setCellValueFactory(new PropertyValueFactory<>("pagamento"));
+            pagamentoColumn.setCellValueFactory(cellData -> new SimpleObjectProperty<>(cellData.getValue().getPagamento().getValorTotal()));
             horaInicioColumn.setCellValueFactory(new PropertyValueFactory<>("horaInicio"));
             horaFimColumn.setCellValueFactory(new PropertyValueFactory<>("horaFim"));
             estadoReservaColumn.setCellValueFactory(new PropertyValueFactory<>("estadoReserva"));
 
             while (rs.next()) {
-                int idCliente = rs.getInt("id_cliente");
-                int idRecinto = rs.getInt("id_recinto");
 
-                Cliente cliente = clienteService.fetchClienteById(idCliente);
-                Recinto recinto = recintoService.fetchRecintoById(idRecinto);
+                Pagamento pagamento = pagamentoService.fetchPagamentoById(rs.getInt("id_pagamento"));
 
                 Reserva reservaInfo = new Reserva(
                         rs.getInt("id_reserva"),
-                        cliente,
-                        recinto,
-                        rs.getBigDecimal("pagamento"),
+                        rs.getInt("id_cliente"),
+                        rs.getInt("id_recinto"),
+                        pagamento,
                         rs.getTimestamp("hora_inicio").toInstant(),
                         rs.getTimestamp("hora_fim").toInstant(),
                         rs.getString("estado_reserva")
@@ -124,9 +124,9 @@ public class ListarReserva implements Initializable {
 
                 String newEstadoReserva;
                 if (previousEstadoReserva == null) {
-                    newEstadoReserva = "Inativo";
+                    newEstadoReserva = "Pendente";
                 } else {
-                    newEstadoReserva = previousEstadoReserva.equals("Ativo") ? "Inativo" : "Ativo";
+                    newEstadoReserva = previousEstadoReserva.equals("Confirmada") ? "Pendente" : "Confirmada";
                 }
 
                 stmt.setString(1, newEstadoReserva);
@@ -146,6 +146,7 @@ public class ListarReserva implements Initializable {
     private void refreshData() {
         ClienteService clienteService = new ClienteService();
         RecintoService recintoService = new RecintoService();
+        PagamentoService pagamentoService = new PagamentoService();
 
         DatabaseConnection connection = new DatabaseConnection();
         String sql = "SELECT * FROM reserva";
@@ -158,23 +159,20 @@ public class ListarReserva implements Initializable {
             idReservaColumn.setCellValueFactory(new PropertyValueFactory<>("id"));
             idClienteColumn.setCellValueFactory(new PropertyValueFactory<>("idCliente"));
             idRecintoColumn.setCellValueFactory(new PropertyValueFactory<>("idRecinto"));
-            pagamentoColumn.setCellValueFactory(new PropertyValueFactory<>("pagamento"));
+            pagamentoColumn.setCellValueFactory(cellData -> new SimpleObjectProperty<>(cellData.getValue().getPagamento().getValorTotal()));
             horaInicioColumn.setCellValueFactory(new PropertyValueFactory<>("horaInicio"));
             horaFimColumn.setCellValueFactory(new PropertyValueFactory<>("horaFim"));
             estadoReservaColumn.setCellValueFactory(new PropertyValueFactory<>("estadoReserva"));
 
             while (rs.next()) {
-                int idCliente = rs.getInt("id_cliente");
-                int idRecinto = rs.getInt("id_recinto");
 
-                Cliente cliente = clienteService.fetchClienteById(idCliente);
-                Recinto recinto = recintoService.fetchRecintoById(idRecinto);
+                Pagamento pagamento = pagamentoService.fetchPagamentoById(rs.getInt("id_pagamento"));
 
                 Reserva reservaInfo = new Reserva(
                         rs.getInt("id_reserva"),
-                        cliente,
-                        recinto,
-                        rs.getBigDecimal("pagamento"),
+                        rs.getInt("id_cliente"),
+                        rs.getInt("id_recinto"),
+                        pagamento,
                         rs.getTimestamp("hora_inicio").toInstant(),
                         rs.getTimestamp("hora_fim").toInstant(),
                         rs.getString("estado_reserva")

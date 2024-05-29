@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.DashBoard">
+   <children>
+      <Label layoutX="6.0" layoutY="14.0" text="DashBoard">
+         <font>
+            <Font name="Georgia" size="36.0" />
+         </font>
+      </Label>
+      <Line endX="409.8929443359375" endY="-1.1444091796875E-5" layoutX="191.0" layoutY="55.0" startX="-191.0" startY="-1.1444091796875E-5" />
+      <Button layoutX="412.0" layoutY="21.0" mnemonicParsing="false" onAction="#handleBackButton" prefHeight="26.0" prefWidth="175.0" style="-fx-background-color: #4F6EDE;" text="Voltar" textFill="WHITE">
+         <font>
+            <Font name="Georgia" size="12.0" />
+         </font>
+      </Button>
+      <Label layoutX="34.0" layoutY="63.0" text="Total Clientes">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <Label layoutX="225.0" layoutY="63.0" text="Total Recintos">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <TextField fx:id="totalClientes" alignment="CENTER" layoutX="18.0" layoutY="97.0" prefHeight="48.0" prefWidth="175.0" style="-fx-border-color: #000000;" />
+      <TextField fx:id="totalRecintos" alignment="CENTER" layoutX="212.0" layoutY="97.0" prefHeight="48.0" prefWidth="178.0" style="-fx-border-color: #000000;" />
+      <Label layoutX="402.0" layoutY="63.0" text="Total Proprietários">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <TextField fx:id="totalProprietarios" alignment="CENTER" layoutX="408.0" layoutY="97.0" prefHeight="48.0" prefWidth="178.0" style="-fx-border-color: #000000;" />
+      <Label layoutX="30.0" layoutY="173.0" text="Total Reservas">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <TextField fx:id="totalReservas" alignment="CENTER" layoutX="18.0" layoutY="207.0" prefHeight="48.0" prefWidth="175.0" style="-fx-border-color: #000000;" />
+      <Label layoutX="231.0" layoutY="173.0" text="Reservas 24h">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <TextField fx:id="reservas24h" alignment="CENTER" layoutX="213.0" layoutY="207.0" prefHeight="48.0" prefWidth="175.0" style="-fx-border-color: #000000;" />
+      <Label layoutX="425.0" layoutY="173.0" text="Reservas Mês">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <TextField fx:id="reservasMes" alignment="CENTER" layoutX="410.0" layoutY="207.0" prefHeight="48.0" prefWidth="175.0" style="-fx-border-color: #000000;" />
+      <Label layoutX="35.0" layoutY="284.0" text="Receita Total">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <TextField fx:id="receitaTotal" alignment="CENTER" layoutX="18.0" layoutY="318.0" prefHeight="48.0" prefWidth="175.0" style="-fx-border-color: #000000;" />
+      <Label layoutX="238.0" layoutY="285.0" text="Receita 24h">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <TextField fx:id="receita24h" alignment="CENTER" layoutX="213.0" layoutY="319.0" prefHeight="48.0" prefWidth="175.0" style="-fx-border-color: #000000;" />
+      <Label layoutX="433.0" layoutY="286.0" text="Receita Mês">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <TextField fx:id="receitaMes" alignment="CENTER" layoutX="412.0" layoutY="320.0" prefHeight="48.0" prefWidth="175.0" style="-fx-border-color: #000000;" />
+   </children>
+</AnchorPane>

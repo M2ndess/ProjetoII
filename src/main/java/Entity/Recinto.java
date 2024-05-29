@@ -1,6 +1,7 @@
 package Entity;
 
 import javax.persistence.*;
+import java.math.BigDecimal;
 
 @Entity
 @Table(name = "recinto")
@@ -12,7 +13,7 @@ public class Recinto {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_cliente")
-    private Cliente idCliente;
+    private Integer idCliente;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_tipo_recinto")
@@ -34,11 +35,13 @@ public class Recinto {
     @Column(name = "estado_recinto", nullable = true, length = 50)
     private String estadoRecinto;
 
+    @Column(name = "preco_hora", nullable = true, length = 50)
+    private BigDecimal precoHora;
     public Recinto() {
         // Empty constructor required by JPA
     }
 
-    public Recinto(Integer id, Cliente idCliente, String nome, String morada, String horarioFuncionamento, String infoExtra, String estadoRecinto) {
+    public Recinto(Integer id, Integer idCliente, String nome, String morada, String horarioFuncionamento, String infoExtra, String estadoRecinto) {
         this.id = id;
         this.idCliente = idCliente;
         this.nome = nome;
@@ -49,7 +52,7 @@ public class Recinto {
     }
 
 
-    public Recinto(Cliente idCliente, String nome, String morada, String horarioFuncionamento, String infoExtra, String estadoRecinto) {
+    public Recinto(Integer idCliente, String nome, String morada, String horarioFuncionamento, String infoExtra, String estadoRecinto) {
         this.idCliente = idCliente;
         this.nome = nome;
         this.morada = morada;
@@ -66,11 +69,11 @@ public class Recinto {
         this.id = id;
     }
 
-    public Cliente getIdCliente() {
+    public Integer getIdCliente() {
         return idCliente;
     }
 
-    public void setIdCliente(Cliente idCliente) {
+    public void setIdCliente(Integer idCliente) {
         this.idCliente = idCliente;
     }
 
@@ -120,5 +123,13 @@ public class Recinto {
 
     public void setEstadoRecinto(String estadoRecinto) {
         this.estadoRecinto = estadoRecinto;
+    }
+
+    public BigDecimal getPrecoHora() {
+        return precoHora;
+    }
+
+    public void setPrecoHora(BigDecimal precoHora) {
+        this.precoHora = precoHora;
     }
 }

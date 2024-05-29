@@ -33,7 +33,7 @@ public class MainMenu {
     //DashBoard Button
     @FXML
     public void handleDashBoardButton(ActionEvent event) throws IOException {
-        root = FXMLLoader.load(getClass().getResource("/fxml/ListarTransportadoras.fxml"));
+        root = FXMLLoader.load(getClass().getResource("/fxml/DashBoard.fxml"));
         switchScene(event);
     }
 

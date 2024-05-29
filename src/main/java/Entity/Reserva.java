@@ -1,6 +1,7 @@
 package Entity;
 
 import javax.persistence.*;
+import javax.persistence.criteria.CriteriaBuilder;
 import java.math.BigDecimal;
 import java.time.Instant;
 
@@ -14,14 +15,14 @@ public class Reserva {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_cliente")
-    private Cliente idCliente;
+    private Integer idCliente;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_recinto")
-    private Recinto idRecinto;
+    private Integer idRecinto;
 
-    @Column(name = "pagamento")
-    private BigDecimal pagamento;
+    @JoinColumn(name = "id_pagamento")
+    private Pagamento pagamento;
 
     @Column(name = "hora_inicio")
     private Instant horaInicio;
@@ -32,11 +33,15 @@ public class Reserva {
     @Column(name = "estado_reserva", nullable = true, length = 50)
     private String estadoReserva;
 
+    @Column(name = "data_reserva", nullable = false)
+    private Instant dataReserva;
+
     public Reserva() {
         // Empty constructor required by JPA
     }
 
-    public Reserva(Integer id, Cliente idCliente, Recinto idRecinto, BigDecimal pagamento, Instant horaInicio, Instant horaFim, String estadoReserva) {
+    // Construtor com todos os parâmetros
+    public Reserva(Integer id, Integer idCliente, Integer idRecinto, Pagamento pagamento, Instant horaInicio, Instant horaFim, String estadoReserva) {
         this.id = id;
         this.idCliente = idCliente;
         this.idRecinto = idRecinto;
@@ -46,8 +51,8 @@ public class Reserva {
         this.estadoReserva = estadoReserva;
     }
 
-
-    public Reserva(Cliente idCliente, Recinto idRecinto, BigDecimal pagamento, Instant horaInicio, Instant horaFim, String estadoReserva) {
+    // Construtor sem o ID da reserva (para novos objetos)
+    public Reserva(Integer idCliente, Integer idRecinto, Pagamento pagamento, Instant horaInicio, Instant horaFim, String estadoReserva) {
         this.idCliente = idCliente;
         this.idRecinto = idRecinto;
         this.pagamento = pagamento;
@@ -64,27 +69,27 @@ public class Reserva {
         this.id = id;
     }
 
-    public Cliente getIdCliente() {
+    public Integer getIdCliente() {
         return idCliente;
     }
 
-    public void setIdCliente(Cliente idCliente) {
+    public void setIdCliente(Integer idCliente) {
         this.idCliente = idCliente;
     }
 
-    public Recinto getIdRecinto() {
+    public Integer getIdRecinto() {
         return idRecinto;
     }
 
-    public void setIdRecinto(Recinto idRecinto) {
+    public void setIdRecinto(Integer idRecinto) {
         this.idRecinto = idRecinto;
     }
 
-    public BigDecimal getPagamento() {
+    public Pagamento getPagamento() {
         return pagamento;
     }
 
-    public void setPagamento(BigDecimal pagamento) {
+    public void setPagamento(Pagamento pagamento) {
         this.pagamento = pagamento;
     }
 
@@ -110,6 +115,14 @@ public class Reserva {
 
     public void setEstadoReserva(String estadoRecinto) {
         this.estadoReserva = estadoReserva;
+    }
+
+    public Instant getDataReserva() {
+        return dataReserva;
+    }
+
+    public void setDataReserva(Instant dataReserva) {
+        this.dataReserva = dataReserva;
     }
 
 /*
