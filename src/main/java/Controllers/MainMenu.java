@@ -37,6 +37,23 @@ public class MainMenu {
         switchScene(event);
     }
 
+    @FXML
+    public void handleAdicionarClienteButton(ActionEvent event) throws IOException {
+        root = FXMLLoader.load(getClass().getResource("/fxml/AdicionarCliente.fxml"));
+        switchScene(event);
+    }
+
+    @FXML
+    public void handleAdicionarReservasButton(ActionEvent event) throws IOException {
+        root = FXMLLoader.load(getClass().getResource("/fxml/AdicionarReserva.fxml"));
+        switchScene(event);
+    }
+
+    @FXML
+    public void handleAdicionarRecintosButton(ActionEvent event) throws IOException {
+        root = FXMLLoader.load(getClass().getResource("/fxml/AdicionarRecinto.fxml"));
+        switchScene(event);
+    }
     //Recintos Button
     @FXML
     public void handleRecintosButton(ActionEvent event) throws IOException {

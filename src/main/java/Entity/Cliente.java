@@ -68,12 +68,21 @@ public class Cliente {
         this.estadoConta = estadoConta;
     }
 
+    public Cliente(Integer idCliente, String nome) {
+        this.idCliente = idCliente;
+        this.nome = nome;
+    }
+
+    public Cliente(String nome) {
+        this.nome = nome;
+    }
+
     public Integer getId() {
         return idCliente;
     }
 
     public void setId(Integer id) {
-        this.idCliente = idCliente;
+        this.idCliente = id;
     }
 
     public TipoCliente getIdTipoCliente() {

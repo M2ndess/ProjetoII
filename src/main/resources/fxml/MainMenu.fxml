@@ -14,19 +14,19 @@
             <Font name="Georgia" size="20.0" />
          </font>
       </Button>
-      <Button layoutX="183.0" layoutY="78.0" mnemonicParsing="false" onAction="#handleDashBoardButton" prefHeight="142.0" prefWidth="142.0" style="-fx-border-color: #000000;" text="DashBoard" textAlignment="CENTER" textOverrun="CLIP" wrapText="true">
+      <Button layoutX="22.0" layoutY="158.0" mnemonicParsing="false" onAction="#handleDashBoardButton" prefHeight="142.0" prefWidth="142.0" style="-fx-border-color: #000000;" text="DashBoard" textAlignment="CENTER" textOverrun="CLIP" wrapText="true">
          <font>
             <Font size="20.0" />
          </font></Button>
-      <Button layoutX="347.0" layoutY="233.0" mnemonicParsing="false" onAction="#handleRecintosButton" prefHeight="142.0" prefWidth="142.0" style="-fx-border-color: #000000;" text="Recintos" textAlignment="CENTER" textOverrun="CLIP" wrapText="true">
+      <Button layoutX="500.0" layoutY="78.0" mnemonicParsing="false" onAction="#handleRecintosButton" prefHeight="142.0" prefWidth="142.0" style="-fx-border-color: #000000;" text="Recintos" textAlignment="CENTER" textOverrun="CLIP" wrapText="true">
          <font>
             <Font size="20.0" />
          </font></Button>
-      <Button layoutX="186.0" layoutY="233.0" mnemonicParsing="false" onAction="#handleClientesButton" prefHeight="142.0" prefWidth="142.0" style="-fx-border-color: #000000;" text="Clientes" textAlignment="CENTER" textOverrun="CLIP" wrapText="true">
+      <Button layoutX="181.0" layoutY="78.0" mnemonicParsing="false" onAction="#handleClientesButton" prefHeight="142.0" prefWidth="142.0" style="-fx-border-color: #000000;" text="Clientes" textAlignment="CENTER" textOverrun="CLIP" wrapText="true">
          <font>
             <Font size="20.0" />
          </font></Button>
-      <Button layoutX="347.0" layoutY="78.0" mnemonicParsing="false" onAction="#handleReservasButton" prefHeight="142.0" prefWidth="142.0" style="-fx-border-color: #000000;" text="Reservas" textAlignment="CENTER" textOverrun="CLIP" wrapText="true">
+      <Button layoutX="340.0" layoutY="78.0" mnemonicParsing="false" onAction="#handleReservasButton" prefHeight="142.0" prefWidth="142.0" style="-fx-border-color: #000000;" text="Reservas" textAlignment="CENTER" textOverrun="CLIP" wrapText="true">
          <font>
             <Font size="20.0" />
          </font></Button>
@@ -35,5 +35,20 @@
             <Font size="30.0" />
          </font>
       </Label>
+      <Button layoutX="181.0" layoutY="229.0" mnemonicParsing="false" onAction="#handleAdicionarClienteButton" prefHeight="142.0" prefWidth="142.0" style="-fx-border-color: #000000;" text="Adiconar Clientes" textAlignment="CENTER" textOverrun="CLIP" wrapText="true">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Button>
+      <Button layoutX="340.0" layoutY="229.0" mnemonicParsing="false" onAction="#handleAdicionarReservasButton" prefHeight="142.0" prefWidth="142.0" style="-fx-border-color: #000000;" text="Adiconar Reservas" textAlignment="CENTER" textOverrun="CLIP" wrapText="true">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Button>
+      <Button layoutX="500.0" layoutY="229.0" mnemonicParsing="false" onAction="#handleAdicionarRecintosButton" prefHeight="142.0" prefWidth="142.0" style="-fx-border-color: #000000;" text="Adiconar Recintos" textAlignment="CENTER" textOverrun="CLIP" wrapText="true">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>
