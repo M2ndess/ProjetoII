@@ -46,6 +46,24 @@ public class AdicionarCliente {
             return;
         }
 
+        // Verificar o formato do email
+        if (!isValidEmail(email)) {
+            System.out.println("O email inserido não é válido");
+            return;
+        }
+
+        // Verificar se o NIF tem exatamente 9 dígitos
+        if (!isValidNIF(nif)) {
+            System.out.println("O NIF deve conter exatamente 9 dígitos numéricos");
+            return;
+        }
+
+        // Verificar o formato do telefone
+        if (!isValidTelefone(telefone)) {
+            System.out.println("O número de telefone não está em um formato válido");
+            return;
+        }
+
         DatabaseConnection connection = new DatabaseConnection();
         String sql = "INSERT INTO cliente (nome, email, username, telefone, nif, password, estado_conta) VALUES (?, ?, ?, ?, ?, ?, ?)";
 
@@ -89,5 +107,20 @@ public class AdicionarCliente {
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
+    }
+
+    private boolean isValidEmail(String email) {
+        // Verificar se o email contém '@'
+        return email.contains("@");
+    }
+
+    private boolean isValidNIF(String nif) {
+        // Verificar se o NIF contém exatamente 9 dígitos
+        return nif.length() == 9 && nif.matches("[0-9]+");
+    }
+
+    private boolean isValidTelefone(String telefone) {
+        // Verifica se o telefone tem exatamente 9 dígitos
+        return telefone.length() == 9 && telefone.matches("[0-9]+");
     }
 }

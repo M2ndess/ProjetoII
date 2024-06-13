@@ -24,6 +24,7 @@ import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.LocalTime;
+import java.time.Duration;
 
 public class AdicionarReserva {
 
@@ -145,12 +146,28 @@ public class AdicionarReserva {
         LocalDate data = datePicker.getValue();
         String horaInicio = comboBoxHoraInicio.getValue();
         String horaFim = comboBoxHoraFim.getValue();
-        String estado_reserva = "Pendente";
+        String estado_reserva = "Confirmada";
+        Integer id_pagamento = 0;
+        Double duracao = null;
 
         LocalDateTime inicioDateTime = LocalDateTime.of(data, LocalTime.parse(horaInicio));
         LocalDateTime fimDateTime = LocalDateTime.of(data, LocalTime.parse(horaFim));
         Timestamp inicioTimestamp = Timestamp.valueOf(inicioDateTime);
         Timestamp fimTimestamp = Timestamp.valueOf(fimDateTime);
+
+        duracao = Duration.between(inicioDateTime, fimDateTime).toHours() * 1.0;
+
+        // Verificação se a data é posterior à data atual
+        if (data.isBefore(LocalDate.now())) {
+            System.out.println("A data deve ser posterior à data atual");
+            return;
+        }
+
+        // Verificação se a hora de início é antes da hora de fim
+        if (!inicioDateTime.isBefore(fimDateTime)) {
+            System.out.println("A hora de início deve ser antes da hora de fim");
+            return;
+        }
 
         if (recintoSelecionado == null || clienteSelecionado == null || data == null || horaInicio == null || horaFim == null) {
             System.out.println("Todos os campos devem ser preenchidos");
@@ -158,7 +175,7 @@ public class AdicionarReserva {
         }
 
         DatabaseConnection connection = new DatabaseConnection();
-        String sql = "INSERT INTO reserva (id_recinto, id_cliente, data_reserva, hora_inicio, hora_fim, estado_reserva) VALUES (?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO reserva (id_recinto, id_cliente, data_reserva, hora_inicio, hora_fim, estado_reserva, id_pagamento, duracao) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
 
         try (Connection conn = connection.getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
@@ -169,6 +186,8 @@ public class AdicionarReserva {
             stmt.setTimestamp(4, inicioTimestamp);
             stmt.setTimestamp(5, fimTimestamp);
             stmt.setString(6, estado_reserva);
+            stmt.setInt(7, id_pagamento);
+            stmt.setDouble(8, duracao);
 
             stmt.executeUpdate();
             clearFields();
