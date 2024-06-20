@@ -57,13 +57,10 @@ public class DashBoard implements Initializable {
         String totalRecintosQuery = "SELECT COUNT(*) AS total FROM recinto";
         String totalProprietariosQuery = "SELECT COUNT(DISTINCT id_cliente) AS total FROM recinto";
         String totalReservasQuery = "SELECT COUNT(*) AS total FROM reserva";
-        String reservas24hQuery = "SELECT COUNT(*) AS total FROM reserva WHERE data_reserva >= NOW() - INTERVAL '1 DAY'";
+        String reservas24hQuery = "SELECT COUNT(*) AS total FROM reserva WHERE data_reserva = CURRENT_DATE";
         String reservasMesQuery = "SELECT COUNT(*) AS total FROM reserva WHERE EXTRACT(MONTH FROM data_reserva) = EXTRACT(MONTH FROM CURRENT_DATE)";
         String receitaTotalQuery = "SELECT SUM(p.valor_total) AS total FROM reserva r JOIN pagamento p ON r.id_pagamento = p.id_pagamento";
-        String receita24hQuery = "SELECT COALESCE(SUM(p.valor_total), 0) AS total\n" +
-                "FROM reserva r\n" +
-                "         LEFT JOIN pagamento p ON r.id_pagamento = p.id_pagamento\n" +
-                "WHERE r.data_reserva >= NOW() - INTERVAL '1 DAY'";
+        String receita24hQuery = "SELECT COALESCE(SUM(p.valor_total), 0) AS total FROM reserva r LEFT JOIN pagamento p ON r.id_pagamento = p.id_pagamento WHERE r.data_reserva::date = CURRENT_DATE\n";
         String receitaMesQuery = "SELECT COALESCE(SUM(p.valor_total), 0) AS total\n" +
                 "FROM reserva r\n" +
                 "         LEFT JOIN pagamento p ON r.id_pagamento = p.id_pagamento\n" +
